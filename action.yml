@@ -1,0 +1,32 @@
+name: "Dokku deploy from github docker image"
+author: "Alan Leite"
+description: ""
+inputs:
+  dokku-server-host:
+    description: ""
+    required: true  
+  dokku-server-username:
+    description: ""
+    required: true  
+  dokku-server-key:
+    description: ""
+    required: true  
+  dokku-app-name:
+    description: ""
+    required: true  
+  gihub-docker-image-repository:
+    description: ""
+    required: true
+  github-token:
+    description: ""
+    required: true      
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.dokku-server-host }}
+    - ${{ inputs.dokku-server-username }}
+    - ${{ inputs.dokku-server-key }}
+    - ${{ inputs.dokku-app-name }}
+    - ${{ inputs.gihub-docker-image-repository }}
+    - ${{ inputs.github-token }}
